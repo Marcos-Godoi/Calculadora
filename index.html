@@ -18,69 +18,71 @@
         </button>       
         </div>       
         <div class="telaResp">
-            <h1 class="cont">0</h1>
+            <h1 id="display" onchange="alterarButton()"></h1>
         </div>
         <div class="buttons">
-            <button class="buttonNumber buttonNumberColor">
+            <button id="buttonApagar" class="buttonNumber buttonNumberColor " onclick="apagar()">
                 AC
             </button>
             <button class="buttonNumber buttonNumberColor">
                 +/-
             </button>
-            <button class="buttonNumber buttonNumberColor">
+            <button class="buttonNumber buttonNumberColor" onclick="operacoes(this)">
                 %
             </button>
-            <button class="buttonNumber buttonNumberColors">
+            <button class="buttonNumber buttonNumberColors" onclick="operacoes(this)">
                 /
-            </button><button class="buttonNumber">
+            </button><button class="buttonNumber" onclick="number(this)">
                 7
             </button>
-            <button class="buttonNumber">
+            <button class="buttonNumber" onclick="number(this)">
                 8
             </button>
-            <button class="buttonNumber">
+            <button class="buttonNumber" onclick="number(this)">
                 9
             </button>
-            <button class="buttonNumber buttonNumberColors">
-                X
+            <button class="buttonNumber buttonNumberColors" onclick="operacoes(this)">
+                x
             </button>
-            <button class="buttonNumber">
+            <button class="buttonNumber" onclick="number(this)">
                 4
             </button>
-            <button class="buttonNumber">
+            <button class="buttonNumber" onclick="number(this)">
                 5
             </button>
-            <button class="buttonNumber">
+            <button class="buttonNumber" onclick="number(this)">
                 6
             </button>
-            <button class="buttonNumber buttonNumberColors">
+            <button class="buttonNumber buttonNumberColors" onclick="operacoes(this)">
                 -
             </button>
-            <button class="buttonNumber">
+            <button class="buttonNumber" onclick="number(this)">
                 1
             </button>
-            <button class="buttonNumber">
+            <button class="buttonNumber" onclick="number(this)">
                 2
             </button>
-            <button class="buttonNumber">
+            <button class="buttonNumber" onclick="number(this)">
                 3
             </button>
-            <button class="buttonNumber buttonNumberColors">
+            <button class="buttonNumber buttonNumberColors" onclick="operacoes(this)">
                 +
             </button>
             <button class="buttonNumber">
                 <img src="./icon/calc.svg" alt="">
             </button>
-            <button class="buttonNumber">
+            <button class="buttonNumber" onclick="number(this)">
                 0
             </button>
-            <button class="buttonNumber">
+            <button class="buttonNumber" onclick="operacoes(this)">
                 ,
             </button>
             <button class="buttonNumber buttonNumberColors">
                 =
             </button>
         </div>
+        
+        <script src="./samir-thola.js"></script>
     </main>
 </body>
 </html>

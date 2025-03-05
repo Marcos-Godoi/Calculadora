@@ -34,7 +34,7 @@ body {
     /* padding: 30px 15px 30px 15px; */
 }
 
-.cont {
+#display {
     color: white;
     font-size: 70px;
     display: flex;
