@@ -15,12 +15,17 @@ function apagar() {
     if (display.innerText != '') {
         let texte = display.innerText
         display.innerText = texte.slice(0, -1)
+    }else{
+        if (display.innerText != '') {
+            display.innerText = ''
+        }
+        alterarButton();
+    
     }
-    // if (display.innerText != '') {
-    //     display.innerText = ''
-    // }
+    
     alterarButton();
 }
+
 function alterarButton() {
     buttonApagar.innerText = display.innerText != '' ? "xx" : "AC"
 }
@@ -31,13 +36,16 @@ function convert(number) {
 
 function operacoes() {
     let Number = display.innerText
-    let array = Number.split(/([x+\-/])/)
-    let resultado = parseFloat(array[0])
+    console.log(Number)
+    Number = Number.replace(",",".")
+    let array = Number.split(/(\d+[\.,]?\d*|\+\/\-|[x\-\+\%\*\/])/)
+    let filteredArray = array.filter(item => item !== "")
+    console.log(filteredArray)
+    let resultado = parseFloat(filteredArray[0])
     let boDivisao0 = true
-    console.log(array)
-    for (let i = 1; i < array.length; i +=2) {
-        let number = parseFloat(array[i+1])
-        switch (array[i]) {
+    for (let i = 1; i < filteredArray.length; i +=2) {
+        let number = parseFloat(filteredArray[i+1])
+        switch (filteredArray[i]) {
             case "+":
                 resultado += number
                 
@@ -59,6 +67,15 @@ function operacoes() {
                 resultado *= number
 
                 break;
+            case "%":
+
+                resultado = (array[0]/100) * array[2]
+    
+                break;
+            case "+/-":
+                resultado *= (-1)
+    
+                break;
 
             default:
                 console.log("nao implementado")
@@ -66,6 +83,7 @@ function operacoes() {
         }
 
     }
-    console.log(resultado)
+    resultado = resultado.toString()
+    resultado = resultado.replace(".",",")
     display.innerText = boDivisao0?resultado:"Indefinido"
 }
