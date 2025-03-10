@@ -1,13 +1,28 @@
 var display = document.getElementById('display');
 var buttonApagar = document.getElementById('buttonApagar');
-let calc = document.getElementById('operadores');
+var calc = document.getElementById('operadores');
+var virgula
 // var boleano = false;
 var digitosUser
 function number(button) {
-    display.innerText += button.innerText;
-    alterarButton();
-
+    // display.innerText += button.innerText;
+    // console.log(display.innerText)
+    $boTemVirgula = false;
+    if (button.innerText === ",") {
+       if (button.innerText == ","){
+        $boTemVirgula = true;
+       }
+    }
+    if (!$boTemVirgula) {
+        display.innerText += button.innerText;
+    }
+    if (button.innerText == '+'|| button.innerText == '-' ||  button.innerText == '/' ||  button.innerText == 'x'  || button.innerText == '%'){
+        $boTemVirgula = false;
+    
+        alterarButton();
+    }
 }
+
 function operacoes(opers) {
     display.innerText += opers.innerText;
 }
@@ -15,12 +30,14 @@ function apagar() {
     if (display.innerText != '') {
         let texte = display.innerText
         display.innerText = texte.slice(0, -1)
-    }else{
-        if (display.innerText != '') {
-            display.innerText = ''
-        }
-        alterarButton();
     
+        
+    }
+    if (buttonIgual = onclick) {
+        display.innerText != '' 
+        display.innerText = ''
+        alterarButton();
+        
     }
     
     alterarButton();
@@ -37,7 +54,8 @@ function convert(number) {
 function operacoes() {
     let Number = display.innerText
     console.log(Number)
-    Number = Number.replace(",",".")
+    Number = Number.replace(/,/g,".")
+    console.log(Number)
     let array = Number.split(/(\d+[\.,]?\d*|\+\/\-|[x\-\+\%\*\/])/)
     let filteredArray = array.filter(item => item !== "")
     console.log(filteredArray)
