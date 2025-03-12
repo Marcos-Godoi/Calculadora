@@ -1,48 +1,32 @@
 var display = document.getElementById('display');
 var buttonApagar = document.getElementById('buttonApagar');
 var calc = document.getElementById('operadores');
-var virgula
 // var boleano = false;
-var digitosUser
+var digitosUser;
+let TemVirgula = false;
+var statusButton = false;
 function number(button) {
-    // display.innerText += button.innerText;
-    // console.log(display.innerText)
-    $boTemVirgula = false;
-    if (button.innerText === ",") {
-       if (button.innerText == ","){
-        $boTemVirgula = true;
-       }
+    if(button.innerText == ',' && display.innerText.endsWith(',')){
+        return
     }
-    if (!$boTemVirgula) {
-        display.innerText += button.innerText;
-    }
-    if (button.innerText == '+'|| button.innerText == '-' ||  button.innerText == '/' ||  button.innerText == 'x'  || button.innerText == '%'){
-        $boTemVirgula = false;
-    
-        alterarButton();
-    }
+    statusButton = false;
+    display.innerText += button.innerText
+    alterarButton()
 }
 
 function operacoes(opers) {
     display.innerText += opers.innerText;
 }
-function apagar() {
-    if (display.innerText != '') {
-        let texte = display.innerText
-        display.innerText = texte.slice(0, -1)
-    
-        
-    }
-    if (buttonIgual = onclick) {
-        display.innerText != '' 
-        display.innerText = ''
-        alterarButton();
-        
-    }
-    
-    alterarButton();
+function apagar(button) {
+        if (statusButton) {
+            display.innerText = '';
+        }
+        if (display.innerText !== '' && !statusButton) {
+            let texte = display.innerText;
+            display.innerText = texte.slice(0, -1);
+            alterarButton();
+        }
 }
-
 function alterarButton() {
     buttonApagar.innerText = display.innerText != '' ? "xx" : "AC"
 }
@@ -53,12 +37,9 @@ function convert(number) {
 
 function operacoes() {
     let Number = display.innerText
-    console.log(Number)
     Number = Number.replace(/,/g,".")
-    console.log(Number)
     let array = Number.split(/(\d+[\.,]?\d*|\+\/\-|[x\-\+\%\*\/])/)
     let filteredArray = array.filter(item => item !== "")
-    console.log(filteredArray)
     let resultado = parseFloat(filteredArray[0])
     let boDivisao0 = true
     for (let i = 1; i < filteredArray.length; i +=2) {
@@ -101,6 +82,8 @@ function operacoes() {
         }
 
     }
+    statusButton = true;
+    buttonApagar.innerText = "AC"
     resultado = resultado.toString()
     resultado = resultado.replace(".",",")
     display.innerText = boDivisao0?resultado:"Indefinido"
